@@ -38,10 +38,14 @@ public class ArrowIdentifier : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D myCollision)
     {
-        if (myCollision.tag == "NoteTrigger")
+        if (gameObject.activeSelf)
         {
-            Pressable = false;
-            GameManager.myInstance.ArrowMissed();
+
+            if (myCollision.tag == "NoteTrigger")
+            {
+                Pressable = false;
+                GameManager.myInstance.ArrowMissed();
+            }
         }
     }
 }
