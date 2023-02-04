@@ -16,6 +16,8 @@ public class ArrowIdentifier : MonoBehaviour
                 gameObject.SetActive(false);
                 GameObject.Find("GameManager").GetComponent<GameManager>().normalHits++;
                 GameObject.Find("GameManager").GetComponent<GameManager>().ArrowHitMathsHandler();
+                GameObject.Find("GameManager").GetComponent<GameManager>().hit.SetActive(true);
+                GameObject.Find("GameManager").GetComponent<GameManager>().hitAndMissTimer = 0;
 
             }
         }       

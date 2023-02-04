@@ -6,6 +6,8 @@ public class MainMenuScript : MonoBehaviour
 {
     public GameObject tutorial;
     public GameObject nontutorial;
+    public GameObject menu;
+    public GameObject back;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +22,18 @@ public class MainMenuScript : MonoBehaviour
 
     public void Tutorial()
     {
-            tutorial.SetActive(true);
+        tutorial.SetActive(true);
+        back.SetActive(true);
         nontutorial.SetActive(false);
+        menu.SetActive(false);
     }
     public void Back()
     {
         tutorial.SetActive(false);
+        back.SetActive(false);
         nontutorial.SetActive(true);
+        menu.SetActive(true);
+        
     }
     public void MainMenu()
     {

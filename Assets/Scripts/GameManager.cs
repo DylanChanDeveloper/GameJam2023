@@ -26,7 +26,19 @@ public class GameManager : MonoBehaviour
     public float normalHits;
     public float MissedNotesHit;
 
-    
+    //public float audioTimer;
+
+    public GameObject destroyAudio;
+
+    public GameObject hit;
+    //public GameObject miss;
+    public float hitAndMissTimer;
+
+    public GameObject gameOver;
+    public GameObject menuGameOver;
+    //public bool isHit;
+
+
 
 
     // Start is called before the first frame update
@@ -42,6 +54,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        hitAndMissTimer += Time.deltaTime;
+        Debug.Log(hitAndMissTimer);
+        if (hitAndMissTimer >= 0.3f)
+        {
+            hit.SetActive(false);
+
+        }
         if (!beginPlaying)
         {
             if(Input.anyKeyDown)
@@ -60,7 +79,20 @@ public class GameManager : MonoBehaviour
 
                 normalHitsText.text = "" + normalHits;
                 MissedNotesText.text = "" + MissedNotesHit;
+                Time.timeScale = 0;
             }
+        }
+
+
+        if (MissedNotesHit == 3)
+        {
+            resultsScreen.SetActive(true);
+            menuGameOver.SetActive(true);
+
+            normalHitsText.text = "" + normalHits;
+            MissedNotesText.text = "" + MissedNotesHit;
+            //Time.timeScale = 0;
+            Destroy(gameOver);
         }
     }
 
