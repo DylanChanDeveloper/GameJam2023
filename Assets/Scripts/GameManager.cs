@@ -6,31 +6,37 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager myInstance;
-
+    public GameObject resultsScreen; 
     public AudioSource myAudio;
+    public BeatPhysics myBP;
 
     public bool beginPlaying;
 
-    public BeatPhysics myBP;
-
-    public int playerScore;
-    public int scoreGain = 10;
-
+    public Text normalHitsText, MissedNotesText;
     public Text scoreText;
     public Text multiplierText;
 
     public int currentMultilpier;
-    public int multilierTracker;
-    public int[] multiplierThresholds;
+    public int multiplierTracker;
+    public int[] multiplierStacks;
+
+    public int playerScore;
+    public int scoreEarned = 10;
+
+    public float normalHits;
+    public float MissedNotesHit;
+
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
         myInstance = this;//the gamemanager will only have one instance
-
         scoreText.text = "Score: 0";
         currentMultilpier = 1;
+
+      //  AllNotes = FindObjectsOfType<ArrowIdentifier>().Length;
     }
 
     // Update is called once per frame
@@ -46,37 +52,53 @@ public class GameManager : MonoBehaviour
                 myAudio.Play();
             }
         }
+        else
+        {
+            if(!myAudio.isPlaying && !resultsScreen.activeInHierarchy)
+            {
+                resultsScreen.SetActive(true);
+
+                normalHitsText.text = "" + normalHits;
+                MissedNotesText.text = "" + MissedNotesHit;
+            }
+        }
     }
 
     public void ArrowHit()
     {
         Debug.Log("hit");
-        if (currentMultilpier - 1 < multiplierThresholds.Length)
+        if (currentMultilpier - 1 < multiplierStacks.Length)
         {
-            multilierTracker++;
+            multiplierTracker++;
 
-            if (multiplierThresholds[currentMultilpier - 1] <= multilierTracker)
+            if (multiplierStacks[currentMultilpier - 1] <= multiplierTracker)
             {
-                multilierTracker = 0;
+                multiplierTracker = 0;
                 currentMultilpier++;
             }
         }
-
-        multiplierText.text = "Score Multiplier: x" + currentMultilpier;
-
-        playerScore += scoreGain * currentMultilpier;
-        scoreText.text = "Score:" + playerScore;
+        ArrowHitMathsHandler();
     }
 
-    public void ArrowMissed()
+    public void ArrowHitMathsHandler()
+    {
+        multiplierText.text = "Score Multiplier: x" + currentMultilpier;
+
+        playerScore += scoreEarned * currentMultilpier;
+        scoreText.text = "Score:" + playerScore;
+        normalHits++;
+    }
+
+    public void ArrowMissed()//for death handling too
     {
         //lose life handling here
-        Debug.Log("missed");
 
-       currentMultilpier = 1;
-        multilierTracker = 0;
 
+        currentMultilpier = 1;
+        multiplierTracker = 0;
 
         multiplierText.text = "Score Multiplier: x" + currentMultilpier;
+        MissedNotesHit++;    
     }
+
 }

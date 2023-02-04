@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class BeatPhysics : MonoBehaviour
 {
+   
     public float BPM;
     public bool started;
 
     // Start is called before the first frame update
     void Start()
     {
+       
         BPM = BPM / 60F;
     }
 
@@ -18,14 +20,13 @@ public class BeatPhysics : MonoBehaviour
     {
         if (!started)
         {
-           /* if (Input.anyKeyDown)
-            {
-                started = true;
-            }      */     
+                
         }
         else
         {
             transform.position -= new Vector3(0f, BPM * Time.deltaTime, 0f);
         }
     }
+
+ 
 }

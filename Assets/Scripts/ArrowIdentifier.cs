@@ -7,13 +7,7 @@ public class ArrowIdentifier : MonoBehaviour
     public bool Pressable;
 
     public KeyCode keyPress;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+   
     void Update()
     {
         if (Input.GetKeyDown(keyPress))
@@ -22,8 +16,7 @@ public class ArrowIdentifier : MonoBehaviour
             {
                 gameObject.SetActive(false);
             }
-        }
-        
+        }       
     }
 
     private void OnTriggerEnter2D(Collider2D myCollision)
@@ -31,7 +24,6 @@ public class ArrowIdentifier : MonoBehaviour
         if(myCollision.tag == "NoteTrigger")
         {
             Pressable = true;
-
             GameManager.myInstance.ArrowHit();
         }
     }
