@@ -18,10 +18,10 @@ public class BeatPhysics : MonoBehaviour
     {
         if (!started)
         {
-            if (Input.anyKeyDown)
+           /* if (Input.anyKeyDown)
             {
                 started = true;
-            }           
+            }      */     
         }
         else
         {

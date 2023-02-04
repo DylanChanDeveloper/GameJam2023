@@ -31,6 +31,8 @@ public class ArrowIdentifier : MonoBehaviour
         if(myCollision.tag == "NoteTrigger")
         {
             Pressable = true;
+
+            GameManager.myInstance.ArrowHit();
         }
     }
 
@@ -39,6 +41,7 @@ public class ArrowIdentifier : MonoBehaviour
         if (myCollision.tag == "NoteTrigger")
         {
             Pressable = false;
+            GameManager.myInstance.ArrowMissed();
         }
     }
 }
