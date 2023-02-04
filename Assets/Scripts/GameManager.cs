@@ -75,9 +75,11 @@ public class GameManager : MonoBehaviour
             {
                 multiplierTracker = 0;
                 currentMultilpier++;
+                normalHits++;
             }
         }
-        ArrowHitMathsHandler();
+        
+        
     }
 
     public void ArrowHitMathsHandler()
@@ -86,7 +88,7 @@ public class GameManager : MonoBehaviour
 
         playerScore += scoreEarned * currentMultilpier;
         scoreText.text = "Score:" + playerScore;
-        normalHits++;
+        
     }
 
     public void ArrowMissed()//for death handling too

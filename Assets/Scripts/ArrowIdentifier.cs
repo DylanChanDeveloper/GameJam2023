@@ -5,7 +5,6 @@ using UnityEngine;
 public class ArrowIdentifier : MonoBehaviour
 {
     public bool Pressable;
-
     public KeyCode keyPress;
    
     void Update()
@@ -15,6 +14,9 @@ public class ArrowIdentifier : MonoBehaviour
             if (Pressable)
             {
                 gameObject.SetActive(false);
+                GameObject.Find("GameManager").GetComponent<GameManager>().normalHits++;
+                GameObject.Find("GameManager").GetComponent<GameManager>().ArrowHitMathsHandler();
+
             }
         }       
     }

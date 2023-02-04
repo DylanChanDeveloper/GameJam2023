@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Activator
   - NoteTrigger
+  - Tutorial
   layers:
   - Default
   - TransparentFX
