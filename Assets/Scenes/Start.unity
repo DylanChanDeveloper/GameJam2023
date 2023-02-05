@@ -86628,6 +86628,7 @@ MonoBehaviour:
   menuGameOver: {fileID: 66187682}
   gameOverSource: {fileID: 2102090317}
   gameOverClip: {fileID: 8300000, guid: 78ecf252b36713f49a9fea28843d6946, type: 3}
+  win: {fileID: 1170854639}
 --- !u!4 &1408910641
 Transform:
   m_ObjectHideFlags: 0
@@ -94279,6 +94280,7 @@ MonoBehaviour:
   nontutorial: {fileID: 0}
   menu: {fileID: 0}
   back: {fileID: 0}
+  tutorialHowToBackGround: {fileID: 0}
   play: {fileID: 0}
   playClip: {fileID: 0}
   howTo: {fileID: 0}
