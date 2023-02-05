@@ -8,6 +8,7 @@ public class MainMenuScript : MonoBehaviour
     public GameObject nontutorial;
     public GameObject menu;
     public GameObject back;
+    public GameObject tutorialHowToBackGround;
     public AudioSource play;
     public AudioClip playClip;
     public AudioSource howTo;
@@ -33,6 +34,7 @@ public class MainMenuScript : MonoBehaviour
         tutorial.SetActive(true);
         back.SetActive(true);
         nontutorial.SetActive(false);
+        tutorialHowToBackGround.SetActive(true);
         menu.SetActive(false);
     }
     public void Back()
@@ -41,6 +43,7 @@ public class MainMenuScript : MonoBehaviour
         back.SetActive(false);
         nontutorial.SetActive(true);
         menu.SetActive(true);
+        tutorialHowToBackGround.SetActive(false);
         quit.PlayOneShot(quitClip);
     }
     public void MainMenu()
