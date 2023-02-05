@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public AudioSource gameOverSource;
     public AudioClip gameOverClip;
     public GameObject win;
+    public GameObject ifWin;
     //public bool isHit;
 
 
@@ -98,6 +99,10 @@ public class GameManager : MonoBehaviour
             //Time.timeScale = 0;
             Destroy(gameOver);
         }
+        if (!win.activeSelf)
+        {
+            Destroy(ifWin);
+        }
     }
 
     public void ArrowHit()
@@ -140,8 +145,5 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void Awake()
-    {
-        DontDestroyOnLoad(gameOverSource);
-    }
+   
 }
