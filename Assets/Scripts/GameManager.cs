@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameOver;
     public GameObject menuGameOver;
+    public AudioSource gameOverSource;
+    public AudioClip gameOverClip;
     //public bool isHit;
 
 
@@ -76,7 +78,6 @@ public class GameManager : MonoBehaviour
             if(!myAudio.isPlaying && !resultsScreen.activeInHierarchy)
             {
                 resultsScreen.SetActive(true);
-
                 normalHitsText.text = "" + normalHits;
                 MissedNotesText.text = "" + MissedNotesHit;
                 Time.timeScale = 0;
@@ -86,13 +87,16 @@ public class GameManager : MonoBehaviour
 
         if (MissedNotesHit == 3)
         {
+            Destroy(myAudio);
+            gameOverSource.PlayOneShot(gameOverClip);
             resultsScreen.SetActive(true);
             menuGameOver.SetActive(true);
-
+            Destroy(GameObject.Find("Rain").gameObject);
             normalHitsText.text = "" + normalHits;
             MissedNotesText.text = "" + MissedNotesHit;
             //Time.timeScale = 0;
             Destroy(gameOver);
+            
         }
     }
 

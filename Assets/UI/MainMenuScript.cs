@@ -8,10 +8,17 @@ public class MainMenuScript : MonoBehaviour
     public GameObject nontutorial;
     public GameObject menu;
     public GameObject back;
+    public AudioSource play;
+    public AudioClip playClip;
+    public AudioSource howTo;
+    public AudioClip howToClip;
+    public AudioSource quit;
+    public AudioClip quitClip;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -22,6 +29,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void Tutorial()
     {
+        howTo.PlayOneShot(howToClip);
         tutorial.SetActive(true);
         back.SetActive(true);
         nontutorial.SetActive(false);
@@ -33,27 +41,43 @@ public class MainMenuScript : MonoBehaviour
         back.SetActive(false);
         nontutorial.SetActive(true);
         menu.SetActive(true);
-        
+        quit.PlayOneShot(quitClip);
     }
     public void MainMenu()
     {
+        //quit.PlayOneShot(quitClip);
         SceneManager.LoadScene("MainMenu");
+        
     }
 
     public void Play()
     {
+
+        //play.PlayOneShot(playClip);
+        //Example();
         SceneManager.LoadScene("Start");
+        
     }
 
     public void ReloadScene()
     {
+        //play.PlayOneShot(playClip);
         SceneManager.LoadScene("Start");
+        
     }
 
     public void doExitGame()
     {
+        //quit.PlayOneShot(quitClip);
         Application.Quit();
         Debug.Log("Quit");
+    }
+    
+    public void Awake()
+    {
+        DontDestroyOnLoad(GameObject.Find("Center").GetComponent<MainMenuScript>().play);
+        DontDestroyOnLoad(GameObject.Find("Center").GetComponent<MainMenuScript>().quit);
+        DontDestroyOnLoad(GameObject.Find("Center").GetComponent<MainMenuScript>().howTo); 
     }
 
 }
